@@ -15,10 +15,10 @@ version: 2.7.6.{build}
 # version: 1.0.{build}-{branch}
 
 # branches to build
-branches:
+#branches:
   # whitelist
-  only:
-    - ipy-maint-2.7
+  #only:
+  #  - ipy-maint-2.7
 
 # Do not build on tags (GitHub and BitBucket)
 skip_tags: true
@@ -134,9 +134,10 @@ after_test:
 #  - do something
 
 # after build failure or success
-on_finish:
+# now that test runner is not hanging, this should not be needed
+#on_finish:
   # upload test results to AppVeyor
-  - ps: $wc = New-Object 'System.Net.WebClient'; $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\Test\TestResult.xml))
+#  - ps: $wc = New-Object 'System.Net.WebClient'; $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\Test\TestResult.xml))
 
   
 #---------------------------------#
