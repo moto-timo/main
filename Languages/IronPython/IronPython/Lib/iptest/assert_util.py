@@ -23,7 +23,7 @@ from iptest.test_env import *
 from iptest import options, l
 
 if not is_silverlight:
-    import nt
+    import os
     from file_util import *
  
 from type_util import types
@@ -36,15 +36,18 @@ def usage(code, msg=''):
 
 if not is_silverlight:
     def get_environ_variable(key):
-        l = [nt.environ[x] for x in nt.environ.keys() if x.lower() == key.lower()]
+        l = [os.environ[x] for x in os.environ.keys() if x.lower() == key.lower()]
         if l: return l[0]
         else: return None
 
     def get_temp_dir():
         temp = get_environ_variable("TMP")
         if temp == None: temp = get_environ_variable("TEMP")
-        if (temp == None) or (' ' in temp) : 
+        if ((temp == None) or (' ' in temp)) and os.name == 'nt': 
             temp = r"C:\temp"
+        if ((temp == None) or (' ' in temp)) and os.name == 'posix': 
+            temp = "/tmp"
+
         return temp
     
     ironpython_dlls = [
@@ -124,7 +127,7 @@ else:
         #team_dir            = path_combine(ip_root, r'Team')
         #team_profile        = path_combine(team_dir, r'settings.py')
         #
-        #my_name             = nt.environ.get(r'USERNAME', None)
+        #my_name             = os.environ.get(r'USERNAME', None)
         #my_dir              = my_name and path_combine(team_dir, my_name) or None
         #my_profile          = my_dir and path_combine(my_dir, r'settings.py') or None
     
@@ -162,7 +165,7 @@ def is_interactive():
 
 def is_stdlib():
     if is_cli:
-        clean_lib = System.IO.Path.GetFullPath(testpath.clean_external_dir + r"\lib").lower()
+        clean_lib = System.IO.Path.GetFullPath(System.IO.Path.Combine(testpath.clean_external_dir, "Lib")).lower()
         for x in sys.path:
             if clean_lib==System.IO.Path.GetFullPath(x).lower():
                 return True
