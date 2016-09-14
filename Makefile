@@ -20,7 +20,7 @@ test-ipy: ironpython testrunner
 		      Test/IronPython.tests.linux /verbose /binpath:bin/Debug /all
 
 
-test-ipyi-release: ironpython-release testrunner-release
+test-ipy-release: ironpython-release testrunner-release
 	CONFIGURATION=Release DLR_ROOT=`pwd` DLR_BIN=`pwd`bin/Release \
 		      mono Test/TestRunner/TestRunner/bin/Release/TestRunner.exe \
 		      Test/IronPython.tests.linux /verbose /binpath:bin/Release /all

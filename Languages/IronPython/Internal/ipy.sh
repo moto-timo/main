@@ -30,7 +30,7 @@ fi
 
 EXECUTABLE=$DLR_BIN/ipy.exe
 TEST=$*
-set ORIG_TEST_OPTIONS=${TEST_OPTIONS}
+ORIG_TEST_OPTIONS=${TEST_OPTIONS}
 
 
 # ---------------------------------------------------------------------------
@@ -51,10 +51,8 @@ fi
 # set TEST_OPTIONS=-X:Python25 %TEST_OPTIONS%
 
 ORIG_IRONPYTHONPATH=${IRONPYTHONPATH}
-set IRONPYTHONPATH=${DLR_ROOT}/External.LCA_RESTRICTED/Languages/IronPython/27/Lib
+export IRONPYTHONPATH=${DLR_ROOT}/External.LCA_RESTRICTED/Languages/IronPython/27/Lib
 DONE=0
-
-echo "IS_FLAKEY = ${IS_FLAKY}"
 
 # ---------------------------------------------------------------------------
 # Run the test
@@ -79,8 +77,8 @@ echo "IS_FLAKEY = ${IS_FLAKY}"
 
 # ---------------------------------------------------------------------------
 # Restore the environment
-set TEST_OPTIONS=${ORIG_TEST_OPTIONS}
-set IRONPYTHONPATH=${ORIG_IRONPYTHONPATH}
+export TEST_OPTIONS=${ORIG_TEST_OPTIONS}
+export IRONPYTHONPATH=${ORIG_IRONPYTHONPATH}
 
 
 # ---------------------------------------------------------------------------
