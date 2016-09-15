@@ -135,7 +135,10 @@ def run_vbc(args):
 
 def run_ilasm(args):
     import file_util
-    return run_tool(file_util.path_combine(get_clr_dir(),"ilasm.exe"), args)
+    if is_posix:
+        return run_tool("/usr/bin/ilasm", args)
+    else:
+        return run_tool(file_util.path_combine(get_clr_dir(),"ilasm.exe"), args)
 
 def number_of_process(arg):
     return len([x for x in os.popen('tasklist.exe').readlines() if x.lower().startswith(arg.lower()) ])

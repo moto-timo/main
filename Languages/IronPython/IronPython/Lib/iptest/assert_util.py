@@ -385,6 +385,8 @@ class skip:
 		return get_num_iterations() > 1
     def stdlib_test(self):
         return is_stdlib()
+    def posix_test(self):
+		return is_posix
     
     def __call__(self, f):
         #skip questionable tests
@@ -397,7 +399,7 @@ class skip:
             return _do_nothing(msg)
 		
         
-        platforms = 'silverlight', 'cli64', 'orcas', 'interactive', 'multiple_execute', 'stdlib'
+        platforms = 'silverlight', 'cli64', 'orcas', 'interactive', 'multiple_execute', 'stdlib', 'posix'
         for to_skip in platforms:
             platform_test = getattr(self, to_skip + '_test')
             if to_skip in self.platforms and platform_test():
@@ -446,6 +448,10 @@ def skiptest(*args):
     elif is_cli64 and 'cli64' in args:
         print '... %s, skipping whole test module on 64-bit CLI...' % sys.platform
         exit_module()
+        
+    elif is_posix and 'posix' in args:
+		print '... %s, skipping whole test module on Posix...' % sys.platform
+		exit_module()
     
     elif get_num_iterations() > 1 and 'multiple_execute' in args:
         print '... %d invocations, skipping whole test module under "multiple_execute" mode...' % get_num_iterations()

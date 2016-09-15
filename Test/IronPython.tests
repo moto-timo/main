@@ -4836,7 +4836,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>false</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4848,7 +4847,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4860,7 +4858,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4872,7 +4869,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>true</Disabled> <!-- requires Microsoft Excel -->
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>false</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4884,7 +4880,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4896,7 +4891,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>true</Disabled> <!-- requires Microsoft Agent -->
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>false</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4908,7 +4902,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>true</Disabled> <!-- requires Microsoft Office -->
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>false</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4920,7 +4913,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4932,7 +4924,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4944,7 +4935,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4956,7 +4946,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4968,7 +4957,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4980,7 +4968,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -4992,7 +4979,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -5004,7 +4990,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -5016,7 +5001,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -5028,7 +5012,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>false</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -5040,7 +5023,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -5052,7 +5034,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>false</Disabled>
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>true</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
@@ -5064,7 +5045,6 @@
           <MaxDuration>600000</MaxDuration>
           <LongRunning>false</LongRunning>
           <Disabled>true</Disabled> <!-- requires Microsoft Word -->
-          <FilterExpression>System.Environment.OSVersion.Platform == System.PlatformID.Win32NT</FilterExpression>
           <RequiresAdmin>false</RequiresAdmin>
           <NotParallelSafe>false</NotParallelSafe>
           <WorkingDirectory>%DLR_ROOT%\languages\ironpython\Tests</WorkingDirectory>
