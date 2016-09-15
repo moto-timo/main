@@ -70,10 +70,10 @@ namespace IronPythonTest {
             RuntimeDirectory = Path.GetDirectoryName(typeof(PythonContext).GetTypeInfo().Assembly.Location);
             RootDirectory = Environment.GetEnvironmentVariable("DLR_ROOT");
             if (RootDirectory != null) {
-                ScriptTestDirectory = Path.Combine(RootDirectory, "Languages\\IronPython\\Tests");
+                ScriptTestDirectory = Path.Combine(RootDirectory, "Languages", "IronPython", "Tests");
             } else {
                 RootDirectory = new System.IO.FileInfo(System.Reflection.Assembly.GetEntryAssembly().Location).Directory.FullName;
-                ScriptTestDirectory = Path.Combine(RootDirectory, "Src\\Tests");
+                ScriptTestDirectory = Path.Combine(RootDirectory, "Src", "Tests");
             }
             InputTestDirectory = Path.Combine(ScriptTestDirectory, "Inputs");
         }
@@ -445,7 +445,7 @@ x = 42", scope);
 #if !SILVERLIGHT        
         public void ScenarioCodePlex20472() {
             try {
-                string fileName = System.IO.Directory.GetCurrentDirectory() + "\\encoded_files\\cp20472.py";
+                string fileName = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "encoded_files", "cp20472.py");
                 _pe.CreateScriptSourceFromFile(fileName, System.Text.Encoding.GetEncoding(1251));
 
                 //Disabled. The line above should have thrown a syntax exception or an import error,
@@ -2399,7 +2399,7 @@ if id(a) == id(b):
 
         private void TestLineInfo(ScriptScope/*!*/ scope, string lineNumber) {
             try {
-                scope.Engine.ExecuteFile(Common.InputTestDirectory + "\\raise.py", scope);
+                scope.Engine.ExecuteFile(Path.Combine(Common.InputTestDirectory, "raise.py"), scope);
                 throw new Exception("We should not get here");
             } catch (StopIterationException e2) {
                 if (scope.Engine.Runtime.Setup.DebugMode != e2.StackTrace.Contains(lineNumber))

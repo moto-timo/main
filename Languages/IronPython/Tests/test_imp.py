@@ -14,7 +14,7 @@
 #####################################################################################
 
 from iptest.assert_util import *
-if is_silverlight==False:
+if not is_silverlight:
     from iptest.file_util import *
 
 import sys
@@ -99,9 +99,9 @@ if is_silverlight==False:
 
 
 
-temp_name = ["nt",
-             "nt.P_WAIT",
-             "nt.chmod",
+temp_name = ["os",
+             "os.P_WAIT",
+             "os.chmod",
              "sys.path",
              "xxxx"
             ]
@@ -517,7 +517,7 @@ called = 3.14
                             ]
     
     strange_file_names = [ path_combine(testpath.public_testdir, "cp7007", x + ".py") for x in strange_module_names ]
-    sys.path.append(testpath.public_testdir + "\\cp7007")
+    sys.path.append(path_combine(testpath.public_testdir, "cp7007"))
     
     for x in strange_file_names: write_to_file(x, file_contents)
     
@@ -526,7 +526,7 @@ called = 3.14
             temp_mod = __import__(x)
             AreEqual(temp_mod.called, 3.14)
     finally:
-        sys.path.remove(testpath.public_testdir + "\\cp7007")
+        sys.path.remove(path_combine(testpath.public_testdir, "cp7007"))
         delete_files(strange_file_names)
 
 def test_relative_control():
@@ -960,14 +960,14 @@ def test_meta_path_before_builtins():
 @skip("silverlight") # no nt module on silverlight
 def test_file_coding():
     try:
-        import nt
+        import os
         f = file('test_coding_mod.py', 'wb+')
         f.write("# coding: utf-8\nx = '\xe6ble'\n")
         f.close()
         import test_coding_mod
         AreEqual(test_coding_mod.x[0], '\xe6')
     finally:
-        nt.unlink('test_coding_mod.py')
+        os.unlink('test_coding_mod.py')
     
     try:
         f = file('test_coding_2.py', 'wb+')
@@ -977,7 +977,7 @@ def test_file_coding():
         import test_coding_2
         AreEqual(test_coding_2.x, 'ABCDE')
     finally:
-        nt.unlink('test_coding_2.py')
+        os.unlink('test_coding_2.py')
         
         
     try:
@@ -990,7 +990,7 @@ def test_file_coding():
         except Exception, e:
             AreEqual(sys.exc_info()[2].tb_next.tb_lineno, 2)
     finally:
-        nt.unlink('test_coding_3.py')
+        os.unlink('test_coding_3.py')
 
 def test_module_subtype():
     class x(type(sys)):
@@ -1126,7 +1126,7 @@ def test_module_getattribute():
     
 @skip("silverlight", "win32")
 def test_import_lookup_after():
-    import nt
+    import os
     try:
         _x_mod = path_combine(testpath.public_testdir, "x.py")
         _y_mod = path_combine(testpath.public_testdir, "y.py")
@@ -1141,12 +1141,12 @@ sys.modules['y'] = newmod
         import y
         AreEqual(type(y), object)
     finally:
-        nt.unlink(_x_mod)
-        nt.unlink(_y_mod)
+        os.unlink(_x_mod)
+        os.unlink(_y_mod)
 
 @skip("silverlight", "win32")
 def test_imp_load_source():
-    import nt
+    import os
     try:
         _x_mod = path_combine(testpath.public_testdir, "x.py")
         write_to_file(_x_mod, """
@@ -1161,7 +1161,7 @@ X = 3.14
         AreEqual(x.X, 3.14)
         AreEqual(x.__doc__, '''some pydoc''')
     finally:
-        nt.unlink(_x_mod)
+        os.unlink(_x_mod)
 
 @skip("silverlight")        
 def test_imp_load_compiled():
@@ -1174,7 +1174,7 @@ def test_imp_load_compiled():
             with open(_x_mod, "r") as f:
                 AreEqual(imp.load_compiled("", "", f), None)
         finally:
-            nt.unlink(_x_mod)
+            os.unlink(_x_mod)
 
 @skip("silverlight") 
 def test_imp_load_dynamic():
@@ -1187,7 +1187,7 @@ def test_imp_load_dynamic():
             with open(_x_mod, "r") as f:
                 AreEqual(imp.load_dynamic("", "", f), None)
         finally:
-            nt.unlink(_x_mod)        
+            os.unlink(_x_mod)        
 
 def test_override_dict():
     class M(type(sys)):
@@ -1296,8 +1296,8 @@ def test_ximp_load_module():
     with file('test.py') as inp_file:
         imp.load_module('my_module_test', inp_file, 'does_not_exist.py', ('', 'U', 1))
         
-    import nt
-    nt.unlink('test.py')
+    import os
+    os.unlink('test.py')
         
     AreEqual(mod.x, 42)
     

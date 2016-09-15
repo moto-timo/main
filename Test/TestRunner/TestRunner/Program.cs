@@ -277,7 +277,7 @@ namespace TestRunner
                 }
                 if(_isUnix) {
                     Console.WriteLine("cd {0}", test.WorkingDirectory.Replace("\\", "/"));
-                    Console.WriteLine("{0} {1}", test.Filename.Replace(".bat", ".sh"), test.Arguments);
+                    Console.WriteLine("{0} {1}", test.Filename.Replace(".bat", ".sh"), test.Arguments.Replace("\\", "/"));
                 } else {
                     Console.WriteLine("CD /D {0}", test.WorkingDirectory);
                     Console.WriteLine("{0} {1}", test.Filename, test.Arguments);
@@ -365,10 +365,10 @@ namespace TestRunner
             psi.FileName = Environment.ExpandEnvironmentVariables(test.Filename);
             if(isUnix) {
                 if(string.Compare(Path.GetExtension(psi.FileName), ".bat", true) == 0) {
-                    psi.FileName = Path.ChangeExtension(psi.FileName, ".sh");
-                    psi.FileName = psi.FileName.Replace("\\", "/");
+                    psi.FileName = Path.ChangeExtension(psi.FileName, ".sh").Replace("\\", "/");
                 }
                 psi.WorkingDirectory = psi.WorkingDirectory.Replace("\\", "/");
+				psi.Arguments = psi.Arguments.Replace("\\", "/");
             }
             psi.RedirectStandardError = true;
             psi.RedirectStandardOutput = true;

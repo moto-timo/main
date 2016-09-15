@@ -91,26 +91,26 @@ else:
         # find the ironpython root directory
         rowan_root          = get_environ_variable("dlr_root")
 
-        basePyDir = 'Languages\\IronPython'
+        basePyDir = path_combine('Languages', 'IronPython')
         if not rowan_root:
             rowan_root = sys.prefix
             if is_cli:
-                if System.IO.Directory.Exists(path_combine(rowan_root, r'..\..\Src')):
-                    basePyDir = r'..\..\Src'
+                if System.IO.Directory.Exists(path_combine(rowan_root, '../../Src')):
+                    basePyDir = '../../Src'
 
         # get some directories and files
         ip_root             = path_combine(rowan_root, basePyDir)
-        external_dir        = path_combine(rowan_root, r'External.LCA_RESTRICTED\Languages\IronPython')
-        clean_external_dir  = path_combine(rowan_root, r'External.LCA_RESTRICTED\Languages\CPython\27')
-        public_testdir      = path_combine(ip_root, r'Tests')
-        compat_testdir      = path_combine(ip_root, r'Tests\compat')
-        test_inputs_dir     = path_combine(ip_root, r'Tests\Inputs')
-        script_testdir      = path_combine(ip_root, r'Scripts')
+        external_dir        = path_combine(rowan_root, 'External.LCA_RESTRICTED/Languages/IronPython')
+        clean_external_dir  = path_combine(rowan_root, 'External.LCA_RESTRICTED/Languages/CPython/27')
+        public_testdir      = path_combine(ip_root, 'Tests')
+        compat_testdir      = path_combine(ip_root, 'Tests/compat')
+        test_inputs_dir     = path_combine(ip_root, 'Tests/Inputs')
+        script_testdir      = path_combine(ip_root, 'Scripts')
 
-        math_testdir        = path_combine(external_dir, r'Math')
-        parrot_testdir      = path_combine(external_dir, r'parrotbench')
-        lib_testdir         = path_combine(external_dir, r'27\Lib')
-        private_testdir     = path_combine(external_dir, r'27\Lib\test')
+        math_testdir        = path_combine(external_dir, 'Math')
+        parrot_testdir      = path_combine(external_dir, 'parrotbench')
+        lib_testdir         = path_combine(external_dir, '27/Lib')
+        private_testdir     = path_combine(external_dir, '27/Lib/test')
 
         temporary_dir   = path_combine(get_temp_dir(), "IronPython")
         ensure_directory_present(temporary_dir)
@@ -119,9 +119,9 @@ else:
 
         if is_cli: 
             ipython_executable  = sys.executable
-            cpython_executable  = path_combine(external_dir, r'27\python.exe')
+            cpython_executable  = path_combine(external_dir, '27/python.exe')
         else: 
-            ipython_executable  = path_combine(sys.prefix, r'ipy.exe')
+            ipython_executable  = path_combine(sys.prefix, 'ipy.exe')
             cpython_executable  = sys.executable
         
         #team_dir            = path_combine(ip_root, r'Team')

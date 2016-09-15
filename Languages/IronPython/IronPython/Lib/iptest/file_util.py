@@ -18,7 +18,7 @@ import os
 import sys
 
 colon = ':'
-separator = '\\'
+separator = os.sep
 
 def create_new_file(filename):
     f = file(filename, "w")
@@ -67,9 +67,9 @@ def file_exists_in_path(file):
 
 # need consider .. and . later
 def fullpath(path):
-    if colon not in path:
+    if sys.platform == "win32" and colon not in path:
         return os.getcwd() + separator + path
-    elif sys.platform!="win32":
+    elif sys.platform != "win32":
         from System.IO.Path import GetFullPath
         return GetFullPath(path)
     else: 

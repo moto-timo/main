@@ -263,6 +263,7 @@ Line263 = 263
 @skip("silverlight")
 def test_cp11923_first():
     try:
+        import os
         _t_test = os.path.join(testpath.public_testdir, "cp11923.py")
         write_to_file(_t_test, """def f():
     x = 'something bad'
