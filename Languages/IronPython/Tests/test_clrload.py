@@ -351,13 +351,13 @@ def get_local_filename(base):
 def compileAndLoad(name, filename, *args):
     import clr
     sys.path.append(sys.exec_prefix)
-    AreEqual(run_csc("/nologo /t:library " + ' '.join(args) + " /out:\"" + path_combine(sys.exec_prefix, name +".dll") + "\"" + filename + "\""), 0)
+    AreEqual(run_csc("/nologo /t:library " + ' '.join(args) + " /out:\"" + path_combine(sys.exec_prefix, name +".dll") + "\" \"" + filename + "\""), 0)
     return clr.LoadAssemblyFromFile(name)
 
 @skip("multiple_execute")
 def test_classname_same_as_ns():
     sys.path.append(sys.exec_prefix)
-    AreEqual(run_csc("/nologo /t:library /out:\"" + path_combine(sys.exec_prefix + "c4.dll") + "\"" + get_local_filename('c4.cs') + "\""), 0)
+    AreEqual(run_csc("/nologo /t:library /out:\"" + path_combine(sys.exec_prefix + "c4.dll") + "\" \"" + get_local_filename('c4.cs') + "\""), 0)
     clr.AddReference("c4")
     import c4
     Assert(not c4 is c4.c4)

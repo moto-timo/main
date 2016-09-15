@@ -312,7 +312,11 @@ namespace IronPythonTest {
 
             AreEqual(Python.GetSysModule(scriptEngine).GetVariable<string>("platform"), "cli");
             AreEqual(Python.GetBuiltinModule(scriptEngine).GetVariable<bool>("True"), true);
-            AreEqual(Python.ImportModule(scriptEngine, "os").GetVariable<int>("F_OK"), 0);
+            if(System.Environment.OSVersion.Platform == System.PlatformID.Unix) {
+                AreEqual(Python.ImportModule(scriptEngine, "posix").GetVariable<int>("F_OK"), 0);
+            } else {
+                AreEqual(Python.ImportModule(scriptEngine, "nt").GetVariable<int>("F_OK"), 0);
+            }
             try {
                 Python.ImportModule(scriptEngine, "non_existant_module");
                 Assert(false);
@@ -2291,6 +2295,10 @@ instOC = TestOC()
 
 #if FEATURE_REMOTING
         public void ScenarioPartialTrust() {
+            // Mono doesn't implement partial trust
+            if(System.Environment.OSVersion.Platform == System.PlatformID.Unix)
+                return;
+                
             // basic check of running a host in partial trust
             
             AppDomainSetup info = new AppDomainSetup();
