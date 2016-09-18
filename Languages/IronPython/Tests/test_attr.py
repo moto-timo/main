@@ -252,8 +252,13 @@ def test_access_checks():
 def test_cp13686():
     import toimport
     import sys
-    import os
-    mod_list = [toimport, sys, os]
+    mod_list = [toimport, sys]
+    if is_posix:
+        import posix
+        mod_list.append(posix)
+    else:
+        import nt
+        mod_list.append(nt)
     
     mod_names = {}
     for mod in mod_list:

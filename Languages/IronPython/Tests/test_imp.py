@@ -287,7 +287,10 @@ def test_is_builtin():
         
     # nt module disabled in Silverlight
     if not is_silverlight:
-        AreEqual(imp.is_builtin("nt"),1)
+        if is_posix:
+            AreEqual(imp.is_builtin("posix"),1)
+        else:
+            AreEqual(imp.is_builtin("nt"),1)
         
     AreEqual(imp.is_builtin("thread"),1)
     
@@ -1048,8 +1051,9 @@ def test_module_subtype():
 
 @runonly("stdlib")
 def test_cp13736():
+    import os
     _f_imp_cp13736 = path_combine(testpath.public_testdir, "impcp13736.py")
-    shortName = _f_imp_cp13736.rsplit("\\", 1)[1].split(".")[0]
+    shortName = _f_imp_cp13736.rsplit(os.sep, 1)[1].split(".")[0]
 
     write_to_file(_f_imp_cp13736, """
 class Test(object):
@@ -1319,7 +1323,7 @@ def test_new_builtin_modules():
     AreEqual(test_new_module.StaticProperty, 42)
     
     # built-in functions shouldn't appear to be bound
-    AreEqual(test_new_module.test_method.__doc__, 'test_method() -> object\r\n')
+    AreEqual(test_new_module.test_method.__doc__, 'test_method() -> object%s' % line_sep)
     AreEqual(test_new_module.test_method.__self__, None)
     
     # unassigned attributes should throw as if the callee failed to look them up

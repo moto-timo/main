@@ -57,9 +57,9 @@ def file_exists_in_path(file):
     else:
         full_path = full_path[0]
     
-    for path in [os.getcwd()] + full_path.split(";"):
+    for path in [os.getcwd()] + full_path.split(os.pathsep):
         path = path.lstrip().rstrip()
-        if file_exists(path + "\\" + file) == True:
+        if file_exists(path_combine(path, file)):
             return True
     
     return False
@@ -68,7 +68,7 @@ def file_exists_in_path(file):
 # need consider .. and . later
 def fullpath(path):
     if sys.platform == "win32" and colon not in path:
-        return os.getcwd() + separator + path
+        return path_combine(os.getcwd(), path)
     elif sys.platform != "win32":
         from System.IO.Path import GetFullPath
         return GetFullPath(path)
