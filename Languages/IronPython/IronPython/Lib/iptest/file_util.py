@@ -19,6 +19,7 @@ import sys
 
 colon = ':'
 separator = os.sep
+line_sep = os.linesep
 
 def create_new_file(filename):
     f = file(filename, "w")
@@ -160,8 +161,11 @@ def find_peverify():
     if sys.platform <> 'cli': return None
     
     import System
-    for d in System.Environment.GetEnvironmentVariable("PATH").split(';'):
-        file = path_combine(d, "peverify.exe")
+    for d in System.Environment.GetEnvironmentVariable("PATH").split(os.pathsep):
+        if is_posix:
+            file = path_combine(d, "peverify")
+        else:
+            file = path_combine(d, "peverify.exe")
         if file_exists(file):
             return file
 
