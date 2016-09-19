@@ -309,7 +309,7 @@ namespace IronPythonTest {
                 AreEqual(po.IndentationInconsistencySeverity, Severity.Warning);
                 AreEqual(po.WarningFilters[0], "warnonme");
             }
-
+            
             AreEqual(Python.GetSysModule(scriptEngine).GetVariable<string>("platform"), "cli");
             AreEqual(Python.GetBuiltinModule(scriptEngine).GetVariable<bool>("True"), true);
             if(System.Environment.OSVersion.Platform == System.PlatformID.Unix) {
@@ -336,7 +336,11 @@ namespace IronPythonTest {
 
             AreEqual(Python.GetSysModule(runtime).GetVariable<string>("platform"), "cli");
             AreEqual(Python.GetBuiltinModule(runtime).GetVariable<bool>("True"), true);
-            AreEqual(Python.ImportModule(runtime, "os").GetVariable<int>("F_OK"), 0);
+            if(System.Environment.OSVersion.Platform == System.PlatformID.Unix) {
+                AreEqual(Python.ImportModule(scriptEngine, "posix").GetVariable<int>("F_OK"), 0);
+            } else {
+                AreEqual(Python.ImportModule(scriptEngine, "nt").GetVariable<int>("F_OK"), 0);
+            }
             try {
                 Python.ImportModule(runtime, "non_existant_module");
                 Assert(false);

@@ -1436,6 +1436,7 @@ def test_clr_dir():
     Assert('IndexOf' in clr.DirClr('abc'))
 
 def test_array_contains():
+    print '%s' % repr(System.Array[str].__dict__)
     AssertError(KeyError, lambda : System.Array[str].__dict__['__contains__'])
 
 def test_a_override_patching():

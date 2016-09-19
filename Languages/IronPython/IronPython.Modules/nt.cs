@@ -812,9 +812,9 @@ namespace IronPython.Modules {
             process.StartInfo.Verb = operation;
 #endif
             try {
-
                 process.Start();
             } catch (Exception e) {
+				Console.Error.WriteLine(e.ToString());
                 throw ToPythonException(e, filename);
             }
         }

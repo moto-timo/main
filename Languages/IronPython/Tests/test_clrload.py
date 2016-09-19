@@ -395,6 +395,8 @@ def test_namespaceimport():
     tmp = testpath.temporary_dir
     if tmp not in sys.path:
         sys.path.append(tmp)
+        
+    print 'sys.path = %s' % sys.path
 
     code1 = "namespace TestNamespace { public class Test1 {} }"
     code2 = "namespace TestNamespace { public class Test2 {} }"
