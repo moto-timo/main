@@ -1,0 +1,17 @@
+language: csharp
+
+solution: Solutions/IronPython.sln
+
+script:
+  - make all
+
+after_script:
+  - make test-ipy-release
+
+notifications:
+  email:
+    recipients:
+      #- slide.o.mix@gmail.com
+      - ticotimo@gmail.com
+    on_success: always # default: change
+    #on_failure: [always|never|change] # default: always
