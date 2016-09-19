@@ -357,7 +357,7 @@ def compileAndLoad(name, filename, *args):
 @skip("multiple_execute")
 def test_classname_same_as_ns():
     sys.path.append(sys.exec_prefix)
-    AreEqual(run_csc("/nologo /t:library /out:\"" + path_combine(sys.exec_prefix + "c4.dll") + "\" \"" + get_local_filename('c4.cs') + "\""), 0)
+    AreEqual(run_csc("/nologo /t:library /out:\"" + path_combine(sys.exec_prefix, "c4.dll") + "\" \"" + get_local_filename('c4.cs') + "\""), 0)
     clr.AddReference("c4")
     import c4
     Assert(not c4 is c4.c4)
@@ -396,8 +396,6 @@ def test_namespaceimport():
     if tmp not in sys.path:
         sys.path.append(tmp)
         
-    print 'sys.path = %s' % sys.path
-
     code1 = "namespace TestNamespace { public class Test1 {} }"
     code2 = "namespace TestNamespace { public class Test2 {} }"
 
