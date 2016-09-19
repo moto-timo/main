@@ -380,13 +380,13 @@ class skip:
     def orcas_test(self):
         return is_orcas
     def interactive_test(self):
-	    return is_interactive()
+        return is_interactive()
     def multiple_execute_test(self):
-		return get_num_iterations() > 1
+        return get_num_iterations() > 1
     def stdlib_test(self):
         return is_stdlib()
     def posix_test(self):
-		return is_posix
+        return is_posix
     
     def __call__(self, f):
         #skip questionable tests

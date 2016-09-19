@@ -814,7 +814,6 @@ namespace IronPython.Modules {
             try {
                 process.Start();
             } catch (Exception e) {
-				Console.Error.WriteLine(e.ToString());
                 throw ToPythonException(e, filename);
             }
         }
