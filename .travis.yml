@@ -3,7 +3,7 @@ language: csharp
 solution: Solutions/IronPython.sln
 
 script:
-  - make all
+  - make ironpython-release
 
 after_script:
   - make test-ipy-release
