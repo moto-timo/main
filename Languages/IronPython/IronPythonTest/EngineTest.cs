@@ -337,9 +337,9 @@ namespace IronPythonTest {
             AreEqual(Python.GetSysModule(runtime).GetVariable<string>("platform"), "cli");
             AreEqual(Python.GetBuiltinModule(runtime).GetVariable<bool>("True"), true);
             if(System.Environment.OSVersion.Platform == System.PlatformID.Unix) {
-                AreEqual(Python.ImportModule(scriptEngine, "posix").GetVariable<int>("F_OK"), 0);
+                AreEqual(Python.ImportModule(runtime, "posix").GetVariable<int>("F_OK"), 0);
             } else {
-                AreEqual(Python.ImportModule(scriptEngine, "nt").GetVariable<int>("F_OK"), 0);
+                AreEqual(Python.ImportModule(runtime, "nt").GetVariable<int>("F_OK"), 0);
             }
             try {
                 Python.ImportModule(runtime, "non_existant_module");
