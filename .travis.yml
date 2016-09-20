@@ -17,6 +17,7 @@ script:
 
 after_script:
   #- make test-ipy-release
+  - xbuild Test/TestRunner/TestRunner.sln
   - mono Test/TestRunner/TestRunner/bin/Debug/TestRunner.exe Test/IronPython.tests /all
 
 notifications:
