@@ -2,6 +2,9 @@ language: csharp
 
 sudo: required
 
+mono:
+  - latest
+
 solution: Solutions/IronPython.sln
 
 install:
@@ -9,10 +12,12 @@ install:
   - nuget restore Solutions/IronPython.sln
 
 script:
-  - make ironpython-release
+  #- make ironpython-release
+  - xbuild Build.proj /t:Build "/p:Mono=true;BaseConfiguration=Release"
 
 after_script:
-  - make test-ipy-release
+  #- make test-ipy-release
+  - mono Test/TestRunner/TestRunner/bin/Debug/TestRunner.exe Test/IronPython.tests /all
 
 notifications:
   email:
