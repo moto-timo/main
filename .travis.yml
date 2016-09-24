@@ -18,7 +18,7 @@ script:
 after_script:
   #- make test-ipy-release
   - xbuild Test/TestRunner/TestRunner.sln /p:Configuration=Release
-  - CONFIGURATION=Release DLR_ROOT=`pwd` DLR_BIN=`pwd`bin/%CONFIGURATION% mono Test/TestRunner/TestRunner/bin/%CONFIGURATION%/TestRunner.exe Test/IronPython.tests /verbose /binpath:bin/%CONFIGURATION% /all
+  - CONFIGURATION=Release DLR_ROOT=`pwd` DLR_BIN=`pwd`bin/$CONFIGURATION mono Test/TestRunner/TestRunner/bin/$CONFIGURATION/TestRunner.exe Test/IronPython.tests /verbose /binpath:bin/$CONFIGURATION /all
 
 notifications:
   email:
