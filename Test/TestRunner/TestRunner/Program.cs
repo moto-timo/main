@@ -204,7 +204,8 @@ namespace TestRunner
             Console.WriteLine("Total time: {0} seconds", elapsedTime.TotalSeconds);
             Console.ForegroundColor = originalColor;
 
-            return failures.Count;
+            return Environment.ExitCode = failures.Count;
+            // return failures.Count;
         }
 
         private void RunTestForConsole(Test test) {
@@ -275,10 +276,9 @@ namespace TestRunner
                         Console.WriteLine("{0} {1}={2}", _isUnix ? "export" : "SET", envVar.Name, envVar.Value);
                     }
                 }
-                
                 if(_isUnix) {
                     Console.WriteLine("cd {0}", test.WorkingDirectory.Replace("\\", "/"));
-                    Console.WriteLine("{0} {1}", test.Filename.Replace(".bat", ".sh").Replace("\\", "/"), test.Arguments.Replace("\\", "/"));
+                    Console.WriteLine("{0} {1}", test.Filename.Replace(".bat", ".sh"), test.Arguments.Replace("\\", "/"));
                 } else {
                     Console.WriteLine("CD /D {0}", test.WorkingDirectory);
                     Console.WriteLine("{0} {1}", test.Filename, test.Arguments);
