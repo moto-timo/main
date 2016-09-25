@@ -204,6 +204,8 @@ namespace TestRunner
             Console.WriteLine("Total time: {0} seconds", elapsedTime.TotalSeconds);
             Console.ForegroundColor = originalColor;
 
+            # Provide an exit code that mono (Travis CI) understands
+            Environment.ExitCode = failures.Count;
             return failures.Count;
         }
 
