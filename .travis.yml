@@ -15,13 +15,9 @@ install:
   - nuget restore Solutions/IronPython.sln
 
 script:
-  #- make ironpython-release
   - xbuild Build.proj /t:Build "/p:Mono=true;BaseConfiguration=$CONFIGURATION"
-
-after_script:
-  #- make test-ipy-release
   - xbuild Test/TestRunner/TestRunner.sln /p:Configuration=$CONFIGURATION
-  - DLR_ROOT=`pwd` DLR_BIN=`pwd`bin/$CONFIGURATION mono Test/TestRunner/TestRunner/bin/$CONFIGURATION/TestRunner.exe Test/IronPython.tests /verbose /binpath:bin/$CONFIGURATION /all
+  - DLR_ROOT=`pwd` DLR_BIN=`pwd`bin/$CONFIGURATION mono ./bin/$CONFIGURATION/TestRunner.exe Test/IronPython.tests /verbose /binpath:bin/$CONFIGURATION /all
 
 notifications:
   email:
